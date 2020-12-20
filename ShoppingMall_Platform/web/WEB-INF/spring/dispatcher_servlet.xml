@@ -18,7 +18,7 @@
         <property name="order" value="1"/> </bean>
 
     <!-- DI 컨테이너에 등록할 패키지 -->
-<!--    <context:component-scan base-package="ROOT"/>-->
+    <context:component-scan base-package="ROOT"/>
 
 
 </beans>

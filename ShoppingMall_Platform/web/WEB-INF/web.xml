@@ -14,7 +14,7 @@
     <!-- 서블릿 컨테이너의 파라미터 contextConfigLocation 설정 -->
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>classpath:spring/*Context.xml</param-value>
+        <param-value>classpath:spring/*.xml</param-value>
     </context-param>
 
     <!-- dispatcherServlet 서블릿 생성 및 매핑 -->
