@@ -1,0 +1,62 @@
+package ROOT.Controller;
+
+import ROOT.Service.MemberService;
+import ROOT.VO.MemberVO;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+@Controller
+@RequestMapping("/member")
+public class MemberController {
+
+    @Inject
+    MemberService service;
+
+    /**
+     * 회원가입 화면
+     */
+    @RequestMapping(value = "/signUpView", method = RequestMethod.GET)
+    public void signUpView() { }
+
+    /**
+     * 회원가입 작업 수행
+     */
+    @RequestMapping(value = "/signUp", method = RequestMethod.POST)
+    public String signUp(MemberVO memberVO) {
+        service.insertMember(memberVO);
+        return "redirect:/";
+    }
+
+    /**
+     * 로그아웃
+     */
+    @RequestMapping(value = "/logout", method = RequestMethod.GET)
+    public String logout(HttpSession session) {
+        session.invalidate();
+        return "redirect:/";
+    }
+
+    /**
+     * 로그인 작업 수행
+     */
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    public String login(MemberVO vo, HttpServletRequest req, RedirectAttributes rttr) {
+        HttpSession session = req.getSession();
+        MemberVO loginMember = service.login(vo);
+
+        if(loginMember == null) {
+            session.setAttribute("member", null);
+            rttr.addFlashAttribute("msg", false);
+        }else {
+            session.setAttribute("member", loginMember);
+        }
+
+        return "redirect:/";
+    }
+}
