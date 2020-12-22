@@ -13,4 +13,9 @@ public interface MemberService {
      * 로그인
      */
     MemberVO login(MemberVO memberVO);
+
+    /**
+     * 회원정보 수정
+     */
+    void changeInfo(MemberVO memberVO);
 }

@@ -59,4 +59,20 @@ public class MemberController {
 
         return "redirect:/";
     }
+
+    /**
+     * 회원정보 수정 화면
+     */
+    @RequestMapping(value="/changeInfoView", method = RequestMethod.GET)
+    public void changeInfoView() { }
+
+    /**
+     * 회원정보 수정 작업 수행
+     */
+    @RequestMapping(value="/changeInfo", method = RequestMethod.POST)
+    public String changeInfo(MemberVO vo, HttpSession session) {
+        service.changeInfo(vo);
+        session.invalidate();
+        return "redirect:/";
+    }
 }

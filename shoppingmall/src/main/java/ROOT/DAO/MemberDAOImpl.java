@@ -26,4 +26,9 @@ public class MemberDAOImpl implements MemberDAO {
     public MemberVO login(MemberVO memberVO) {
         return sqlSession.selectOne("memberMapper.login", memberVO);
     }
+
+    public void changeInfo(MemberVO memberVO){
+        sqlSession.update("memberMapper.changeInfo", memberVO);
+    }
+
 }

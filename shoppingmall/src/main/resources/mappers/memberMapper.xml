@@ -16,4 +16,12 @@
         FROM member
         WHERE userId = #{userId} AND userPwd = #{userPwd}
     </select>
+
+    <!--회원정보 수정-->
+    <update id="changeInfo">
+        UPDATE member
+        SET userPwd = #{userPwd},
+            userName = #{userName}
+        WHERE userId = #{userId}
+    </update>
 </mapper>
