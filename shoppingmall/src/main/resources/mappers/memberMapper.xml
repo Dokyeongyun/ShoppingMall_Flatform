@@ -24,4 +24,11 @@
             userName = #{userName}
         WHERE userId = #{userId}
     </update>
+
+    <!--아이디 중복확인-->
+    <select id="idDoubleCheck" resultType="int">
+        SELECT COUNT(*)
+        FROM member
+        WHERE userId = #{userId}
+    </select>
 </mapper>

@@ -27,8 +27,17 @@ public class MemberDAOImpl implements MemberDAO {
         return sqlSession.selectOne("memberMapper.login", memberVO);
     }
 
+    /**
+     * 회원정보 변경
+     */
     public void changeInfo(MemberVO memberVO){
         sqlSession.update("memberMapper.changeInfo", memberVO);
     }
 
+    /**
+     * 아이디 중복확인
+     */
+    public int idDoubleCheck(MemberVO memberVO){
+        return sqlSession.selectOne("memberMapper.idDoubleCheck", memberVO);
+    }
 }

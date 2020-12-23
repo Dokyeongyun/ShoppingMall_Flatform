@@ -14,5 +14,14 @@ public interface MemberDAO {
      */
     MemberVO login(MemberVO memberVO);
 
+    /**
+     * 회원정보 변경
+     */
     void changeInfo(MemberVO memberVO);
+
+    /**
+     * 아이디 중복확인
+     */
+    int idDoubleCheck(MemberVO memberVO);
+
 }

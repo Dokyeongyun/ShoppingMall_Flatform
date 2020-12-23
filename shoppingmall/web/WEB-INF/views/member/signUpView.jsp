@@ -1,5 +1,3 @@
-<%@ page import="ROOT.DAO.MemberDAO" %>
-<%@ page import="ROOT.DAO.MemberDAOImpl" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <html>
@@ -46,8 +44,33 @@
 					$("#dateOfBirth").focus();
 					return false;
 				}
+
+				var idCheck = $("#idDoubleCheck").val();
+				if(idCheck == "N"){
+					alert("중복확인 버튼을 눌러주세요.");
+					return false;
+				}else if(idCheck == "Y"){
+					$("#signUp").submit();
+				}
 			});
 		})
+
+		function fn_idDoubleCheck(){
+			$.ajax({
+				url : "/member/idDoubleCheck",
+				type : "post",
+				dataType : "json",
+				data : {"userId" : $("#userId").val()},
+				success : function(data){
+					if(data == 1){
+						alert("중복된 아이디입니다.");
+					}else if(data == 0){
+						$("#idDoubleCheck").attr("value", "Y");
+						alert("사용가능한 아이디입니다.");
+					}
+				}
+			})
+		}
 </script>
 
 <body>
@@ -61,6 +84,7 @@
             <div class="form-group has-feedback">
                 <label class="control-label" for="userId">아이디</label>
                 <input class="form-control" type="text" id="userId" name="userId" />
+                <button class ="idDoubleCheck" type="button" id="idDoubleCheck" onclick="fn_idDoubleCheck();" value="N">중복확인</button>
             </div>
             <div class="form-group has-feedback">
                 <label class="control-label" for="userPwd">패스워드</label>

@@ -18,4 +18,9 @@ public interface MemberService {
      * 회원정보 수정
      */
     void changeInfo(MemberVO memberVO);
+
+    /**
+     * 아이디 중복확인
+     */
+    int idDoubleCheck(MemberVO memberVO);
 }

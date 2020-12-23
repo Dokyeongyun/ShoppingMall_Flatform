@@ -33,4 +33,11 @@ public class MemberServiceImpl implements MemberService {
     public void changeInfo(MemberVO memberVO) {
         memberDAO.changeInfo(memberVO);
     }
+
+    /**
+     * 아이디 중복확인
+     */
+    public int idDoubleCheck(MemberVO memberVO){
+        return memberDAO.idDoubleCheck(memberVO);
+    }
 }

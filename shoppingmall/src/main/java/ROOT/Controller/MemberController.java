@@ -5,6 +5,7 @@ import ROOT.VO.MemberVO;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.inject.Inject;
@@ -29,7 +30,16 @@ public class MemberController {
      */
     @RequestMapping(value = "/signUp", method = RequestMethod.POST)
     public String signUp(MemberVO memberVO) {
-        service.insertMember(memberVO);
+        int result = service.idDoubleCheck(memberVO);
+        try {
+            if(result == 1) { // 아이디 중복!
+                return "/member/signUp";
+            }else if(result == 0) { // 사용가능
+                service.insertMember(memberVO);
+            }
+        } catch (Exception e) {
+            throw new RuntimeException();
+        }
         return "redirect:/";
     }
 
@@ -74,5 +84,14 @@ public class MemberController {
         service.changeInfo(vo);
         session.invalidate();
         return "redirect:/";
+    }
+
+    /**
+     * 아이디 중복확인
+     */
+    @ResponseBody
+    @RequestMapping(value="/idDoubleCheck", method = RequestMethod.POST)
+    public int idDoubleCheck(MemberVO memberVO){
+        return service.idDoubleCheck(memberVO);
     }
 }
