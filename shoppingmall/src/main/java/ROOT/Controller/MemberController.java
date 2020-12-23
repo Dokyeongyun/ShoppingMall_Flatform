@@ -94,4 +94,28 @@ public class MemberController {
     public int idDoubleCheck(MemberVO memberVO){
         return service.idDoubleCheck(memberVO);
     }
+
+    /**
+     * 회원 탈퇴 화면
+     */
+    @RequestMapping(value="/memberWithdrawView", method = RequestMethod.GET)
+    public void memberWithdrawView() { }
+
+    /**
+     * 회원 탈퇴
+     */
+    @RequestMapping(value="/memberWithdraw", method = RequestMethod.POST)
+    public String memberWithdraw(MemberVO memberVO, HttpSession session, RedirectAttributes rttr) {
+        MemberVO sessionUser = (MemberVO) session.getAttribute("member");
+        String sessionUserPwd = sessionUser.getUserPwd();
+        String inputPwd = memberVO.getUserPwd();
+
+        if(!(sessionUserPwd.equals(inputPwd))) {
+            rttr.addFlashAttribute("msg", false);
+            return "redirect:/member/memberWithdrawView";
+        }
+        service.memberWithdraw(memberVO);
+        session.invalidate();
+        return "redirect:/";
+    }
 }

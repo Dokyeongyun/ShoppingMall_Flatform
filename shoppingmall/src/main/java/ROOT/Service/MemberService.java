@@ -23,4 +23,9 @@ public interface MemberService {
      * 아이디 중복확인
      */
     int idDoubleCheck(MemberVO memberVO);
+
+    /**
+     * 회원 탈퇴
+     */
+    void memberWithdraw(MemberVO memberVO);
 }

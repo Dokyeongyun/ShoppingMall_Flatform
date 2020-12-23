@@ -24,4 +24,8 @@ public interface MemberDAO {
      */
     int idDoubleCheck(MemberVO memberVO);
 
+    /**
+     * 회원 탈퇴
+     */
+    void memberWithdraw(MemberVO memberVO);
 }

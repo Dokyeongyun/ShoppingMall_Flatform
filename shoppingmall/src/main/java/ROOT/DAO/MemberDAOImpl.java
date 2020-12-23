@@ -40,4 +40,11 @@ public class MemberDAOImpl implements MemberDAO {
     public int idDoubleCheck(MemberVO memberVO){
         return sqlSession.selectOne("memberMapper.idDoubleCheck", memberVO);
     }
+
+    /**
+     * 회원 탈퇴
+     */
+    public void memberWithdraw(MemberVO memberVO){
+        sqlSession.delete("memberMapper.memberWithdraw", memberVO);
+    }
 }

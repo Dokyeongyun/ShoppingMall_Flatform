@@ -40,4 +40,11 @@ public class MemberServiceImpl implements MemberService {
     public int idDoubleCheck(MemberVO memberVO){
         return memberDAO.idDoubleCheck(memberVO);
     }
+
+    /**
+     * 회원 탈퇴
+     */
+    public void memberWithdraw(MemberVO memberVO){
+        memberDAO.memberWithdraw(memberVO);
+    }
 }

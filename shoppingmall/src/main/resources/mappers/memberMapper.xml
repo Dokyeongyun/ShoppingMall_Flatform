@@ -31,4 +31,11 @@
         FROM member
         WHERE userId = #{userId}
     </select>
+
+    <!-- 회원탈퇴 -->
+    <delete id="memberWithdraw">
+        DELETE FROM member
+        WHERE userId = #{userId}
+          AND userPwd = #{userPwd}
+    </delete>
 </mapper>
