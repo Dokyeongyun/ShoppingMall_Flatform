@@ -35,7 +35,8 @@
                         <li><a href="${pageContext.request.contextPath}/member/signUpView">회원가입</a> </li>
                     </c:if>
                     <c:if test="${sessionScope.member ne null}">
-                        <li class="active"><a href="${pageContext.request.contextPath}/member/logout">로그아웃</a> </li>
+                        <li class="active"><a href="${pageContext.request.contextPath}/member/changeInfoView">회원정보 수정</a> </li>
+                        <li><a href="${pageContext.request.contextPath}/member/logout">로그아웃</a> </li>
                     </c:if>
                 </ul>
             </li>

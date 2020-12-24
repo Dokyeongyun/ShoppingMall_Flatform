@@ -44,6 +44,12 @@
                alert('비밀번호가 일치하지 않습니다.');
             </script>
         </c:if>
+        <c:if test="${msg == true}">
+            <script>
+                alert('이용해주셔서 감사합니다!');
+                location.href="/";
+            </script>
+        </c:if>
     </div>
 </section>
 </body>

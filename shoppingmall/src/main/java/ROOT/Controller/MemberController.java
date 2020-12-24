@@ -120,6 +120,7 @@ public class MemberController {
         }
         service.memberWithdraw(memberVO);
         session.invalidate();
-        return "redirect:/";
+        rttr.addFlashAttribute("msg", true);
+        return "redirect:/member/memberWithdrawView";
     }
 }

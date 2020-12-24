@@ -12,13 +12,10 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		$("#logoutBtn").on("click", function(){
-			location.href="member/logout";
+			location.href="/member/logout";
 		})
 		$("#signUp").on("click", function(){
-			location.href="member/signUpView";
-		})
-		$("#changeInfo").on("click", function(){
-			location.href="member/changeInfoView";
+			location.href="/member/signUpView";
 		})
 	})
 </script>
@@ -39,15 +36,10 @@
             <button id="signUp" type="button">회원가입</button>
         </div>
     </c:if>
-    <c:if test="${member != null }">
-        <div>
-            <p>${member.userId}님 환영 합니다.</p>
-            <button id="changeInfo" type="button">회원정보수정</button>
-            <button id="logoutBtn" type="button">로그아웃</button>
-        </div>
-    </c:if>
     <c:if test="${msg == false}">
-        <p style="color: red;">로그인 실패! 아이디와 비밀번호 확인해주세요.</p>
+        <script>
+            alert('로그인 실패! 아이디와 비밀번호 확인해주세요.');
+        </script>
     </c:if>
 </form>
 </body>
