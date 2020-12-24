@@ -4,10 +4,11 @@
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="../resources/js/bootstrap.js"></script>
+<script src="../resources/js/shop.js"></script>
 <link rel="stylesheet" href="../resources/css/bootstrap.min.css">
 
 <%--내비게이션 바--%>
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default" style="margin-bottom: 0">
     <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed"
                 data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
@@ -21,7 +22,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
             <li><a href="${pageContext.request.contextPath}/">메인</a> </li>
-            <li><a href="/">상품보기</a> </li>
+            <li><a href="${pageContext.request.contextPath}/shop/shopMainView">상품보기</a> </li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
