@@ -43,6 +43,9 @@ public class MemberController {
         return "redirect:/";
     }
 
+    @RequestMapping(value = "/loginView", method = RequestMethod.GET)
+    public void loginView(){ }
+
     /**
      * 로그아웃
      */
@@ -63,6 +66,7 @@ public class MemberController {
         if(loginMember == null) {
             session.setAttribute("member", null);
             rttr.addFlashAttribute("msg", false);
+            return "redirect:/member/loginView";
         }else {
             session.setAttribute("member", loginMember);
         }
