@@ -1,0 +1,69 @@
+.ul_horizontal {
+    list-style: none;
+    display: inline-block;
+    background: white;
+    border-bottom: 1px solid #dddddd;
+}
+.li_horizontal {
+    float: left;
+    margin-right: 20px;
+    background-color: white;
+    width: 200px;
+    padding: 10px;
+}
+.right_main_menu {
+    position: absolute;
+    left: 200px;
+    width: 80%;
+    min-width: max-content;
+    min-height: 100%;
+    background-color: white;
+}
+.left_main_menu {
+    float: left;
+    width: 200px;
+    min-height: 100%;
+    border-right: 1px solid #dddddd;
+    display: block;
+}
+.product_img {
+    max-width: 100%;
+    object-fit: cover;
+    height: 300px;
+}
+.product_img_wrap {
+    height: 300px;
+}
+.product_Info {
+    margin-top: 10px;
+}
+
+/* 드롭다운 메뉴 */
+#menu {
+    font:bold 16px small-caption;
+    color:black;
+    line-height: 50px;
+    margin:0 auto;
+}
+#menu > ul > li {
+    float:left;
+    width:140px;
+    position:relative;
+}
+a {
+    text-decoration: none;
+    color:#333;
+}
+li {
+    list-style: none;
+}
+#menu > ul > li > ul {
+    padding-left: 10px;
+    width: 130px;
+    display: none;
+    position: relative;
+    font-size: 14px;
+}
+#menu > ul > li > ul > li:hover > a{
+    color: red;
+}

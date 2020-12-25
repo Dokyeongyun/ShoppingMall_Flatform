@@ -14,8 +14,8 @@ function openLeftMenu() {
     var right_main_menu_obj = $(".right_main_menu");
 
     left_area_obj.show();
-    left_menu_btn_obj.css("left", "20%");
-    right_main_menu_obj.css({"left":"20%", "width":"80%"});
+    left_menu_btn_obj.css("left", "200px");
+    right_main_menu_obj.css({"left":"200px", "width":"80%"});
 }
 
 // 좌메뉴 닫기
