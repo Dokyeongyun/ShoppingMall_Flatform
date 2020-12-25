@@ -4,7 +4,7 @@
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="../resources/js/bootstrap.js"></script>
-<script src="../resources/js/shop.js"></script>
+<script src="../resources/js/shop.js?ver=1"></script>
 <link rel="stylesheet" href="../resources/css/bootstrap.min.css">
 
 <%--내비게이션 바--%>
