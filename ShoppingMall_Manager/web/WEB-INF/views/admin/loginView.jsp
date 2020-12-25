@@ -12,24 +12,24 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		$("#logoutBtn").on("click", function(){
-			location.href="/member/logout";
+			location.href="/admin/logout";
 		})
 		$("#signUp").on("click", function(){
-			location.href="/member/signUpView";
+			location.href="/admin/signUpView";
 		})
 	})
 </script>
 
 <body>
-<form name='homeForm' method="post" action="${pageContext.request.contextPath}/member/login">
-    <c:if test="${member == null}">
+<form name='homeForm' method="post" action="${pageContext.request.contextPath}/admin/login">
+    <c:if test="${sessionScope.admin == null}">
         <div>
-            <label for="userId"></label>
-            <input type="text" id="userId" name="userId">
+            <label for="admId"></label>
+            <input type="text" id="admId" name="admId">
         </div>
         <div>
-            <label for="userPwd"></label>
-            <input type="password" id="userPwd" name="userPwd">
+            <label for="admPwd"></label>
+            <input type="password" id="admPwd" name="admPwd">
         </div>
         <div>
             <button type="submit">로그인</button>

@@ -23,21 +23,23 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
             <li><a href="${pageContext.request.contextPath}/">메인</a> </li>
-            <li><a href="${pageContext.request.contextPath}/shop/shopMainView">상품보기</a> </li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
+            <c:if test="${sessionScope.admin ne null}">
+                <li><a href="#">${sessionScope.admin.admId} 님</a></li>
+            </c:if>
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle"
                    data-toggle="dropdown" role="button" aria-haspopup="true"
                    aria-expanded="false">접속하기<span class="caret"></span> </a>
                 <ul class="dropdown-menu">
-                    <c:if test="${sessionScope.member eq null}">
-                        <li class="active"><a href="${pageContext.request.contextPath}/member/loginView">로그인</a> </li>
-                        <li><a href="${pageContext.request.contextPath}/member/signUpView">회원가입</a> </li>
+                    <c:if test="${sessionScope.admin eq null}">
+                        <li class="active"><a href="${pageContext.request.contextPath}/admin/loginView">로그인</a> </li>
+                        <li><a href="${pageContext.request.contextPath}/admin/signUpView">회원가입</a> </li>
                     </c:if>
-                    <c:if test="${sessionScope.member ne null}">
-                        <li class="active"><a href="${pageContext.request.contextPath}/member/changeInfoView">회원정보 수정</a> </li>
-                        <li><a href="${pageContext.request.contextPath}/member/logout">로그아웃</a> </li>
+                    <c:if test="${sessionScope.admin ne null}">
+                        <li class="active"><a href="${pageContext.request.contextPath}/admin/changeInfoView">회원정보 수정</a> </li>
+                        <li><a href="${pageContext.request.contextPath}/admin/logout">로그아웃</a> </li>
                     </c:if>
                 </ul>
             </li>

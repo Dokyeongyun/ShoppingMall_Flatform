@@ -18,25 +18,7 @@
     </div>
     <!--//left drawer menu-->
 
-    <script>
-        $(document).ready(function() {
-            $("#hotProduct").on("click", function(){
-                $('#productListContent').addClass('hidden');
-                $('#hotProductContent').removeClass('hidden');
-
-                $('#hotProduct').addClass('active');
-                $('#productList').removeClass('active');
-            })
-            $("#productList").on("click", function(){
-                $('#hotProductContent').addClass('hidden');
-                $('#productListContent').removeClass('hidden');
-
-                $('#hotProduct').removeClass('active');
-                $('#productList').addClass('active');
-            })
-        });
-    </script>
-
+    <!--좌측 네비게이션 드롭다운 메뉴 toggle-->
     <script>
         $(document).ready(function() {
             $(".main>li").on("click", function() {
@@ -47,8 +29,9 @@
             });
         });
     </script>
-    <!--left main menu-->
+    <!--//좌측 네비게이션 드롭다운 메뉴 toggle-->
 
+    <!--left main menu-->
     <div class="left_main_menu">
         <div id="menu">
             <ul class="main">

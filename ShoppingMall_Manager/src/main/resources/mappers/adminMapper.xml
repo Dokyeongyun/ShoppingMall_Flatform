@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="adminMapper">
+
+    <!--회원가입-->
+    <insert id="insertMember">
+        INSERT INTO admin(admId, admPwd, admName, admEmail, admPhone, admDateOfBirth)
+        VALUES(#{admId}, #{admPwd}, #{admName}, #{admEmail}, #{admPhone}, #{admDateOfBirth})
+   </insert>
+
+    <!--로그인-->
+    <select id="login" resultType="ROOT.VO.AdminVO">
+        SELECT admId, admPwd
+        FROM admin
+        WHERE admId = #{admId} AND admPwd = #{admPwd}
+    </select>
+
+    <!--회원정보 수정-->
+    <update id="changeInfo">
+        UPDATE admin
+        SET admPwd = #{admPwd},
+            admName = #{admName}
+        WHERE admId = #{admId}
+    </update>
+
+    <!--아이디 중복확인-->
+    <select id="idDoubleCheck" resultType="int">
+        SELECT COUNT(*)
+        FROM admin
+        WHERE admId = #{admId}
+    </select>
+
+    <!-- 회원탈퇴 -->
+    <delete id="memberWithdraw">
+        DELETE FROM admin
+        WHERE admId = #{admId}
+          AND admPwd = #{admPwd}
+    </delete>
+</mapper>
