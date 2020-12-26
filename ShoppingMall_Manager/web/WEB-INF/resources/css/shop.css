@@ -12,12 +12,13 @@
     padding: 10px;
 }
 .right_main_menu {
+    padding: 40px;
     position: absolute;
     left: 200px;
-    width: 80%;
-    min-width: max-content;
+    width: max-content;
+    min-width: 85%;
     min-height: 100%;
-    background-color: white;
+    background-color: #f5f5f5;
 }
 .left_main_menu {
     float: left;
@@ -66,4 +67,161 @@ li {
 }
 #menu > ul > li > ul > li:hover > a{
     color: red;
+}
+
+/* 상품 등록 화면 */
+.page_title_wrap {
+    position: relative;
+    height: fit-content;
+}
+.page_title {
+    position: relative;
+    padding-top: 21px;
+    background: none;
+    font-size: 22px;
+    font-weight: bold;
+    letter-spacing: -1px;
+}
+.content_top {
+    padding-top: 20px;
+}
+.notice_box {
+    padding: 10px;
+    background-color: #f7fffb;
+}
+.notice_ul {
+    padding-left: 20px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.notice_li {
+    padding-left: 0;
+    color: red;
+    font-size: 12px;
+}
+.content_bottom {
+    padding-top: 30px;
+}
+.content_bottom_item {
+    margin-bottom: 50px;
+    background: white;
+    padding: 30px;
+}
+.table_title {
+    font-size: 16px;
+    font-weight: bold;
+}
+.table_content_area {
+    padding-top: 15px;
+}
+.table_content {
+    border: 1px solid #dfdfdf;
+    font-size: 14px;
+    width: 100%;
+}
+.table_content > tbody > tr {
+     border-bottom: 1px solid #dfdfdf;
+}
+.table_content > tbody > tr > th {
+    padding: 20px 15px;
+    background: #ececec;
+}
+.table_content > tbody > tr > td {
+    padding: 20px 20px;
+}
+.table_content > tbody > tr > td > textarea {
+    border: 1px solid rgb(223, 223, 223);
+    padding-left: 10px;
+    padding-top: 10px;
+}
+.table_content th.must:before {
+    color: #fd3930;
+    font-size: 14px;
+    content: '*';
+    margin-right: 5px;
+}
+input[type=checkbox], input[type=radio] {
+    margin: 5px;
+    line-height: normal;
+}
+.description {
+    display: block;
+    padding: 4px 10px;
+    color: #a4a4a4;
+    font-size: 11px;
+    line-height: 20px;
+    letter-spacing: -1px;
+}
+
+input[type="text"] {
+    width: 140px;
+    height: 34px;
+    padding: 0 13px;
+    border: 1px solid #dfdfdf;
+    border-radius: 0;
+    color: #28292c;
+}
+input.medium {
+    width: 432px !important;
+}
+input.small {
+    width: 172px !important;
+}
+span.td_txt, label.td_txt {
+    position: relative;
+    top: 1px !important;
+    display: inline-block;
+    margin-left: 2px !important;
+    font-size: 12px;
+    line-height: 24px;
+    vertical-align: middle;
+}
+.date-picker_area {
+    display: none;
+    vertical-align: middle;
+    margin: 0 20px 0 10px;
+}
+.period_wrap button {
+    width: 54px;
+    height: 26px;
+    padding: 0;
+    margin-right: 5px;
+    border-color: #dfdfdf;
+    border-radius: 99em;
+    font-size: 11px;
+    color: #444444;
+    line-height: 25px;
+}
+.date_time_picker {
+    padding-left: 13px;
+}
+.btn_wrap {
+    z-index: 10;
+    margin: 20px 0 0;
+    font-size: 0;
+    width: 100%;
+    text-align: center;
+    overflow: hidden;
+    vertical-align: middle;
+    position: relative;
+}
+button#save {
+    width: 150px;
+    background: #00ce95;
+    border-color: transparent;
+    color: #fff !important;
+    font-size: 16px;
+    letter-spacing: -1px;
+    height: 46px;
+    margin-right: 30px;
+}
+button#cancelBtn {
+    width: 150px;
+    background: #a2a2a2 !important;
+    border: 1px solid #a2a2a2 !important;
+    color: #fff;
+    font-weight: normal;
+    font-size: 16px;
+    letter-spacing: -1px;
+    height: 46px;
 }
