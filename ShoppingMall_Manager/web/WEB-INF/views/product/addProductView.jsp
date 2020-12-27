@@ -87,9 +87,9 @@
                                 <th class="must">판매기간</th>
                                 <td colspan="3">
                                     <div class="radio_wrap">
-                                        <input type="radio" value="REGULAR" name="salePeriodType" id="salePeriodType_1" class="{{class}}" checked="checked">
+                                        <input type="radio" value="REGULAR" name="pdtPeriodType" id="salePeriodType_1" class="{{class}}" checked="checked">
                                         <label for="salePeriodType_1">상시판매</label>
-                                        <input type="radio" value="PERIOD" name="salePeriodType" id="salePeriodType_2" class="{{class}}">
+                                        <input type="radio" value="PERIOD" name="pdtPeriodType" id="salePeriodType_2" class="{{class}}">
                                         <label for="salePeriodType_2">기간판매</label>
                                     </div>
                                     <div class="date-picker_area" data-period-standard="start" id="salePeriodArea" style="padding-top: 10px">
@@ -157,7 +157,7 @@
     var pdtSaleEndDate_obj = document.getElementById('pdtSaleEndDate');
     var pdtSaleEndTime_obj = document.getElementById('pdtSaleEndTime');
 
-    var salePeriodType = "REGULAR";
+    var pdtPeriodType = "REGULAR";
 
     var tDate = new Date();
     tDate.setHours(tDate.getHours()+9);
@@ -171,11 +171,11 @@
 
     $(document).ready(function(){
         // 라디오버튼 클릭시 이벤트 발생
-        $("input:radio[name=salePeriodType]").click(function(){
-            salePeriodType = $("input[name=salePeriodType]:checked").val();
-            if(salePeriodType === "REGULAR"){
+        $("input:radio[name=pdtPeriodType]").click(function(){
+            pdtPeriodType = $("input[name=pdtPeriodType]:checked").val();
+            if(pdtPeriodType === "REGULAR"){
                 $(".date-picker_area").css("display","none");
-            } else if(salePeriodType === "PERIOD"){
+            } else if(pdtPeriodType === "PERIOD"){
                 $(".date-picker_area").css("display","block");
             }
         });

@@ -6,11 +6,11 @@
 
     <!--상품등록-->
     <insert id="addProduct">
-        INSERT INTO product(pdtName, pdtGroupType, pdtCategory, pdtDetail,
+        INSERT INTO product(pdtName, pdtGroupType, pdtCategory, pdtDetail, pdtPeriodType,
                             pdtSaleStartDate, pdtSaleStartTime,
                             pdtSaleEndDate, pdtSaleEndTime,
                             pdtPrice, pdtStockCnt)
-        VALUES (#{pdtName}, #{pdtGroupType}, #{pdtCategory}, #{pdtDetail},
+        VALUES (#{pdtName}, #{pdtGroupType}, #{pdtCategory}, #{pdtDetail}, #{pdtPeriodType},
                #{pdtSaleStartDate}, #{pdtSaleStartTime},
                #{pdtSaleEndDate}, #{pdtSaleEndTime},
                #{pdtPrice}, #{pdtStockCnt});

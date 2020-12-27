@@ -9,6 +9,7 @@ public class ProductVO implements Serializable {
     private String pdtGroupType;
     private String pdtCategory;
     private String pdtDetail;
+    private String pdtPeriodType;
     private String pdtSaleStartDate;
     private String pdtSaleStartTime;
     private String pdtSaleEndDate;
@@ -22,6 +23,7 @@ public class ProductVO implements Serializable {
     public String getPdtGroupType() { return pdtGroupType; }
     public String getPdtCategory() { return pdtCategory; }
     public String getPdtDetail() { return pdtDetail; }
+    public String getPdtPeriodType() { return pdtPeriodType; }
     public String getPdtSaleStartDate() { return pdtSaleStartDate; }
     public String getPdtSaleStartTime() { return pdtSaleStartTime; }
     public String getPdtSaleEndDate() { return pdtSaleEndDate; }
@@ -35,6 +37,7 @@ public class ProductVO implements Serializable {
     public void setPdtGroupType(String pdtGroupType) { this.pdtGroupType = pdtGroupType; }
     public void setPdtCategory(String pdtCategory) { this.pdtCategory = pdtCategory; }
     public void setPdtDetail(String pdtDetail) { this.pdtDetail = pdtDetail; }
+    public void setPdtPeriodType(String pdtPeriodType) { this.pdtPeriodType = pdtPeriodType; }
     public void setPdtSaleStartDate(String pdtSaleStartDate) { this.pdtSaleStartDate = pdtSaleStartDate; }
     public void setPdtSaleStartTime(String pdtSaleStartTime) { this.pdtSaleStartTime = pdtSaleStartTime; }
     public void setPdtSaleEndDate(String pdtSaleEndDate) { this.pdtSaleEndDate = pdtSaleEndDate; }
