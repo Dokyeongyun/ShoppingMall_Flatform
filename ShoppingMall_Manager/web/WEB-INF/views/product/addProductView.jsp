@@ -17,7 +17,7 @@
             </div>
         </div>
         <div class="content_bottom">
-            <form id="productForm">
+            <form id="productForm" method="post" action="${pageContext.request.contextPath}/product/addProduct">
                 <div class="content_bottom_item">
                     <div class="table_title_area">
                         <div class="table_title">기본정보</div>
@@ -35,9 +35,9 @@
                                 <th class="must">상품군</th>
                                 <td colspan="3">
                                     <div class="radio_wrap">
-                                        <input type="radio" value="DELIVERY" name="groupType" id="groupType_1" class="{{class}}" checked="checked">
+                                        <input type="radio" value="DELIVERY" name="pdtGroupType" id="groupType_1" class="{{class}}" checked="checked">
                                         <label for="groupType_1">배송상품군</label>
-                                        <input type="radio" value="SERVICE" name="groupType" id="groupType_2" class="{{class}}">
+                                        <input type="radio" value="SERVICE" name="pdtGroupType" id="groupType_2" class="{{class}}">
                                         <label for="groupType_2">서비스상품군</label>
                                     </div>
                                 </td>
@@ -103,13 +103,13 @@
                                     </div>
                                     <div class="date-picker_area" style="margin-top: 10px">
                                         <span>
-                                            <input type="date" class="date_time_picker" id="period_start_date">
-                                            <input type="time" class="date_time_picker" id="period_start_time">
+                                            <input type="date" class="date_time_picker" name="pdtSaleStartDate" id="pdtSaleStartDate">
+                                            <input type="time" class="date_time_picker" name="pdtSaleStartTime" id="pdtSaleStartTime">
                                         </span>
                                         <span> ~ </span>
                                         <span>
-                                            <input type="date" class="date_time_picker" id="period_end_date">
-                                            <input type="time" class="date_time_picker" id="period_end_time">
+                                            <input type="date" class="date_time_picker" name="pdtSaleEndDate" id="pdtSaleEndDate">
+                                            <input type="time" class="date_time_picker" name="pdtSaleEndTime" id="pdtSaleEndTime">
                                         </span>
                                     </div>
                                     <span class="description">기간 판매 설정 시, 판매 예정인 상품을 미리 등록 가능하되 지정한 날짜 외에는 구매 불가 상태로 노출됩니다.</span>
@@ -120,8 +120,8 @@
                                 <td colspan="3">
                                     <span class="input_area">
                                         <input type="text" class="small" data-type="price"
-                                                   name="salePrice" placeholder="숫자만 입력" maxlength="11"
-                                                   id="salePrice" data-cut-firstdigit="true" value="">
+                                                   name="pdtPrice" placeholder="숫자만 입력" maxlength="11"
+                                                   id="pdtPrice" data-cut-firstdigit="true" value="">
                                         <span class="td_txt">원</span>
                                     </span>
                                 </td>
@@ -130,8 +130,8 @@
                                 <th class="must">재고수량</th>
                                 <td colspan="3">
                                     <span class="inputbox_wrap">
-                                        <input type="text" class="ncp_input comma inputValueCheck small"
-                                               data-type="stock" name="productStockCnt" id="productStockCnt"
+                                        <input type="text" class="small"
+                                               data-type="stock" name="pdtStockCnt" id="pdtStockCnt"
                                                placeholder="숫자만 입력" maxlength="10" value="">
                                         <span class="td_txt">개</span>
                                     </span>
@@ -142,52 +142,90 @@
                         </table>
                     </div>
                 </div>
+                <div id="bottomConfirmBtnWrap" class="btn_wrap">
+                    <button class="medium" id="save" type="submit">저장</button>
+                    <button class="medium" id="cancelBtn" type="button">취소</button>
+                </div>
             </form>
-            <div id="bottomConfirmBtnWrap" class="btn_wrap">
-                <button class="medium" id="save" type="button">저장</button>
-                <button class="medium" id="cancelBtn" type="button">취소</button>
-            </div>
         </div>
     </div>
     <!--//right main menu-->
 
 <script>
-    var period_start_date_obj = document.getElementById('period_start_date');
-    var period_start_time_obj = document.getElementById('period_start_time');
-    var period_end_date_obj = document.getElementById('period_end_date');
-    var period_end_time_obj = document.getElementById('period_end_time');
+    var pdtSaleStartDate_obj = document.getElementById('pdtSaleStartDate');
+    var pdtSaleStartTime_obj = document.getElementById('pdtSaleStartTime');
+    var pdtSaleEndDate_obj = document.getElementById('pdtSaleEndDate');
+    var pdtSaleEndTime_obj = document.getElementById('pdtSaleEndTime');
+
+    var salePeriodType = "REGULAR";
 
     var tDate = new Date();
     tDate.setHours(tDate.getHours()+9);
 
-    period_start_date_obj.value = tDate.toISOString().slice(0, 10);
-    period_start_time_obj.value = tDate.toISOString().slice(11, 16);
-    period_end_time_obj.value = "23:59";
+    // 판매 시작기간에 현재 날짜, 시간 설정
+    pdtSaleStartDate_obj.value = tDate.toISOString().slice(0, 10);
+    pdtSaleStartTime_obj.value = tDate.toISOString().slice(11, 16);
+    // 판매 종료시간 설정
+    pdtSaleEndDate_obj.value = tDate.toISOString().slice(0, 10);
+    pdtSaleEndTime_obj.value = "23:59";
 
     $(document).ready(function(){
         // 라디오버튼 클릭시 이벤트 발생
         $("input:radio[name=salePeriodType]").click(function(){
-            var value = $("input[name=salePeriodType]:checked").val();
-            if(value === "REGULAR"){
+            salePeriodType = $("input[name=salePeriodType]:checked").val();
+            if(salePeriodType === "REGULAR"){
                 $(".date-picker_area").css("display","none");
-            } else if(value === "PERIOD"){
+            } else if(salePeriodType === "PERIOD"){
                 $(".date-picker_area").css("display","block");
             }
         });
         $("#save").click(function(){
-            // 입력값 검사
-            // DB insert
-            // 상품 리스트 화면으로 이동
+            tDate = new Date();
+            tDate.setHours(tDate.getHours()+9);
+
+            var pdtGroupType = $('input[name="pdtGroupType"]:checked').val();
+            var pdtCategory = $('input[name="pdtCategory"]').val();
+            var pdtName = $('input[name="pdtName"]').val();
+            var pdtDetail = $('textarea[name="pdtDetail"]').val();
+            var pdtPrice = $('input[name="pdtPrice"]').val();
+            var pdtStockCnt = $('input[name="pdtStockCnt"]').val();
+
+            if(pdtGroupType==="" || pdtCategory==="" || pdtName==="" ||
+                pdtDetail==="" || pdtPrice==="" ||pdtStockCnt==="" ||
+                pdtSaleStartDate_obj.value==="" || pdtSaleStartTime_obj.value==="" ||
+                pdtSaleEndDate_obj.value==="" || pdtSaleEndTime_obj.value===""
+            ){
+                alert("필수 정보를 모두 입력해주세요.")
+                return false;
+            }
+
+            // 판매기간 입력값 검사
+            if(pdtSaleStartDate_obj.value > pdtSaleEndDate_obj.value){
+                alert("판매 시작일자가 판매 종료일자보다 클 수 없습니다.")
+                return false;
+            } else if(pdtSaleStartDate_obj.value === pdtSaleEndDate_obj.value) {
+                if(pdtSaleStartTime_obj.value > pdtSaleEndTime_obj.value){
+                    alert("판매 시작시간이 판매 종료시간보다 클 수 없습니다.")
+                    return false;
+                }
+            } else {
+                $('#save').submit();
+            }
         });
+
         $("#cancelBtn").click(function(){
             history.back();
         });
     });
 
     function fn_setPeriod(clicked_value) {
-        var cDate = new Date();
-        cDate.setHours(cDate.getHours() + (clicked_value*24) + 9);
-        period_end_date_obj.value = cDate.toISOString().slice(0,10);
+        tDate = new Date();
+        tDate.setHours(tDate.getHours()+9);
+        pdtSaleStartDate_obj.value = tDate.toISOString().slice(0, 10);
+        pdtSaleStartTime_obj.value = tDate.toISOString().slice(11, 16);
+
+        tDate.setHours(tDate.getHours() + (clicked_value*24));
+        pdtSaleEndDate_obj.value = tDate.toISOString().slice(0,10);
         return false;
     }
 </script>
