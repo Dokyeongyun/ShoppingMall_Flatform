@@ -6,8 +6,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.inject.Inject;
+import java.util.List;
 
 @Controller
 @RequestMapping("/product")
@@ -35,5 +37,13 @@ public class ProductController {
      * 상품리스트 화면
      */
     @GetMapping("/showProductList")
-    public void showProductList(){ }
+    public ModelAndView showProductList(){
+        List<ProductVO> productList = service.getAllProductList();
+
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("/product/showProductList");
+        mv.addObject("productList", productList);
+
+        return mv;
+    }
 }

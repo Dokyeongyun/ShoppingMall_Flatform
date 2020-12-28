@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <jsp:include page="/WEB-INF/views/mainHeader.jsp"/>
 
@@ -46,19 +47,23 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td class="tg-nrix"></td>
-                                <td class="tg-nrix">1</td>
-                                <td class="tg-nrix">니트</td>
-                                <td class="tg-nrix">2020-12-28 ~ 2020-12-30</td>
-                                <td class="tg-nrix">판매중</td>
-                                <td class="tg-nrix">전시중</td>
-                                <td class="tg-nrix">15,000 원</td>
-                                <td class="tg-nrix">7개</td>
-                                <td class="tg-nrix">7개</td>
-                                <td class="tg-nrix">상의</td>
-                                <td class="tg-nrix">배송상품</td>
-                            </tr>
+                            <c:forEach var="productList" items="${productList}">
+                                <tr>
+                                    <td class="tg-nrix">${productList.pdtImageURL}</td>
+                                    <td class="tg-nrix">${productList.pdtId}</td>
+                                    <td class="tg-nrix">${productList.pdtName}</td>
+                                    <td class="tg-nrix">${productList.pdtSaleStartDate} ~ ${productList.pdtSaleEndDate}</td>
+                                    <td class="tg-nrix"><c:if test="${productList.pdtSaleStatus eq true}">판매중</c:if>
+                                        <c:if test="${productList.pdtSaleStatus eq false}">판매중지</c:if></td>
+                                    <td class="tg-nrix"><c:if test="${productList.pdtDisplayStatus eq true}">전시중</c:if>
+                                        <c:if test="${productList.pdtDisplayStatus eq false}">전시중지</c:if></td>
+                                    <td class="tg-nrix">${productList.pdtPrice}</td>
+                                    <td class="tg-nrix">${productList.pdtStockCnt}</td>
+                                    <td class="tg-nrix">7개</td>
+                                    <td class="tg-nrix">${productList.pdtCategory}</td>
+                                    <td class="tg-nrix">${productList.pdtGroupType}</td>
+                                </tr>
+                            </c:forEach>
                             </tbody>
                         </table>
                     </div>

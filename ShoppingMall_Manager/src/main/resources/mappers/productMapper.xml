@@ -16,4 +16,29 @@
                #{pdtPrice}, #{pdtStockCnt});
    </insert>
 
+    <resultMap type="ROOT.VO.ProductVO" id="productResultMap">
+        <id property="pdtId" column="pdtId"/>
+        <result property="pdtName" column="pdtName"/>
+        <result property="pdtGroupType" column="pdtGroupType"/>
+        <result property="pdtCategory" column="pdtCategory"/>
+        <result property="pdtDetail" column="pdtDetail"/>
+        <result property="pdtPeriodType" column="pdtPeriodType"/>
+        <result property="pdtSaleStartDate" column="pdtSaleStartDate"/>
+        <result property="pdtSaleStartTime" column="pdtSaleStartTime"/>
+        <result property="pdtSaleEndDate" column="pdtSaleEndDate"/>
+        <result property="pdtSaleEndTime" column="pdtSaleEndTime"/>
+        <result property="pdtSaleEndTime" column="pdtSaleEndTime"/>
+        <result property="pdtPrice" column="pdtPrice"/>
+        <result property="pdtStockCnt" column="pdtStockCnt"/>
+        <result property="pdtSaleStatus" column="pdtSaleStatus"/>
+        <result property="pdtDisplayStatus" column="pdtDisplayStatus"/>
+        <result property="pdtImageURL" column="pdtImageURL"/>
+    </resultMap>
+
+    <!--모든 상품 리스트 가져오기-->
+    <select id="getAllProductList" resultMap="productResultMap">
+        SELECT *
+        FROM product
+    </select>
+
 </mapper>
