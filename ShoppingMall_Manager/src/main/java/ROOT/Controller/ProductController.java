@@ -16,12 +16,24 @@ public class ProductController {
     @Inject
     ProductService service;
 
+    /**
+     * 상품등록 화면
+     */
     @GetMapping("/addProductView")
     public void addProductView(){ }
 
+    /**
+     * 상품등록
+     */
     @PostMapping("/addProduct")
     public String addProduct(ProductVO productVO) {
         service.addProduct(productVO);
         return "redirect:/";
     }
+
+    /**
+     * 상품리스트 화면
+     */
+    @GetMapping("/showProductList")
+    public void showProductList(){ }
 }

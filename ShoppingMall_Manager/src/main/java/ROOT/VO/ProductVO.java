@@ -16,6 +16,9 @@ public class ProductVO implements Serializable {
     private String pdtSaleEndTime;
     private int pdtPrice;
     private int pdtStockCnt;
+    private boolean pdtSaleStatus;
+    private boolean pdtDisplayStatus;
+    private String pdtImageURL;
 
     // getter
     public String getPdtId() { return pdtId; }
@@ -30,6 +33,9 @@ public class ProductVO implements Serializable {
     public String getPdtSaleEndTime() { return pdtSaleEndTime; }
     public int getPdtPrice() { return pdtPrice; }
     public int getPdtStockCnt() { return pdtStockCnt; }
+    public boolean isPdtSaleStatus() { return pdtSaleStatus; }
+    public boolean isPdtDisplayStatus() { return pdtDisplayStatus; }
+    public String getPdtImageURL() { return pdtImageURL; }
 
     // setter
     public void setPdtId(String pdtId) { this.pdtId = pdtId; }
@@ -44,4 +50,7 @@ public class ProductVO implements Serializable {
     public void setPdtSaleEndTime(String pdtSaleEndTime) { this.pdtSaleEndTime = pdtSaleEndTime; }
     public void setPdtPrice(int pdtPrice) { this.pdtPrice = pdtPrice; }
     public void setPdtStockCnt(int pdtStockCnt) { this.pdtStockCnt = pdtStockCnt; }
+    public void setPdtSaleStatus(boolean pdtSaleStatus) { this.pdtSaleStatus = pdtSaleStatus; }
+    public void setPdtDisplayStatus(boolean pdtDisplayStatus) { this.pdtDisplayStatus = pdtDisplayStatus; }
+    public void setPdtImageURL(String pdtImageURL) { this.pdtImageURL = pdtImageURL; }
 }

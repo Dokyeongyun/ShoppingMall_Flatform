@@ -6,7 +6,7 @@
 <script src="../resources/js/bootstrap.js"></script>
 <script src="../resources/js/shop.js?ver=2"></script>
 <link rel="stylesheet" href="../resources/css/bootstrap.min.css">
-<link rel="stylesheet" href="../resources/css/shop.css?ver=1">
+<link rel="stylesheet" href="../resources/css/shop.css?ver=2">
 
 <%--내비게이션 바--%>
 <nav class="navbar navbar-default" style="margin-bottom: 0">
@@ -83,7 +83,7 @@
                 <li><a href="#">상품관리</a>
                     <ul class="sub">
                         <li><a href="${pageContext.request.contextPath}/product/addProductView">상품등록</a></li>
-                        <li><a href="#">SUB_MENU2</a></li>
+                        <li><a href="${pageContext.request.contextPath}/product/showProductList">상품 리스트</a></li>
                         <li><a href="#">SUB_MENU3</a></li>
                     </ul>
                 </li>
