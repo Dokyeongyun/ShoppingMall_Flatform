@@ -3,9 +3,10 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="../resources/js/bootstrap.js"></script>
-<script src="../resources/js/shop.js?ver=1"></script>
-<link rel="stylesheet" href="../resources/css/bootstrap.min.css">
+<script src="/resources/js/bootstrap.js"></script>
+<script src="/resources/js/shop.js?ver=1"></script>
+<link rel="stylesheet" href="/resources/css/bootstrap.min.css">
+<link rel="stylesheet" href="/resources/css/shop.css">
 
 <%--내비게이션 바--%>
 <nav class="navbar navbar-default" style="margin-bottom: 0">

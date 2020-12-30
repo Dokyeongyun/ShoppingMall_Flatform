@@ -26,4 +26,11 @@ public class ProductDAOImpl implements ProductDAO {
     public List<ProductVO> getDisplayProducts(){
         return sqlSession.selectList("productMapper.getDisplayProducts");
     }
+
+    /**
+     * 상품 상세정보 읽기
+     */
+    public ProductVO getProductDetail(ProductVO productVO){
+        return sqlSession.selectOne("productMapper.getProductDetail", productVO);
+    }
 }

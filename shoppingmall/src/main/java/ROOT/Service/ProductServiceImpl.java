@@ -26,4 +26,11 @@ public class ProductServiceImpl implements ProductService {
     public List<ProductVO> getDisplayProducts(){
         return productDAO.getDisplayProducts();
     }
+
+    /**
+     * 상품 상세정보 읽기
+     */
+    public ProductVO getProductDetail(ProductVO productVO){
+        return productDAO.getProductDetail(productVO);
+    }
 }

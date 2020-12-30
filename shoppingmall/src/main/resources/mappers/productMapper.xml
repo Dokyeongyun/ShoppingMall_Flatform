@@ -11,6 +11,13 @@
         WHERE pdtDisplayStatus = 1;
     </select>
 
+    <!--상품 상세정보-->
+    <select id="getProductDetail" resultType="ROOT.VO.ProductVO">
+        SELECT *
+        FROM product
+        WHERE pdtId = #{pdtId};
+    </select>
+
     <resultMap type="ROOT.VO.ProductVO" id="productResultMap">
         <id property="pdtId" column="pdtId"/>
         <result property="pdtName" column="pdtName"/>
