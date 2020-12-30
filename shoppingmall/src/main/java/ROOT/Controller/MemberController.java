@@ -43,6 +43,9 @@ public class MemberController {
         return "redirect:/";
     }
 
+    /**
+     * 로그인 화면
+     */
     @RequestMapping(value = "/loginView", method = RequestMethod.GET)
     public void loginView(){ }
 

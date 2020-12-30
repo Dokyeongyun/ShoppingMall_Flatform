@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="productMapper">
+
+    <!--전시중인 상품 리스트 가져오기-->
+    <select id="getDisplayProducts" resultMap="productResultMap">
+        SELECT *
+        FROM product
+        WHERE pdtDisplayStatus = 1;
+    </select>
+
+    <resultMap type="ROOT.VO.ProductVO" id="productResultMap">
+        <id property="pdtId" column="pdtId"/>
+        <result property="pdtName" column="pdtName"/>
+        <result property="pdtGroupType" column="pdtGroupType"/>
+        <result property="pdtCategory" column="pdtCategory"/>
+        <result property="pdtDetail" column="pdtDetail"/>
+        <result property="pdtPeriodType" column="pdtPeriodType"/>
+        <result property="pdtSaleStartDate" column="pdtSaleStartDate"/>
+        <result property="pdtSaleStartTime" column="pdtSaleStartTime"/>
+        <result property="pdtSaleEndDate" column="pdtSaleEndDate"/>
+        <result property="pdtSaleEndTime" column="pdtSaleEndTime"/>
+        <result property="pdtSaleEndTime" column="pdtSaleEndTime"/>
+        <result property="pdtPrice" column="pdtPrice"/>
+        <result property="pdtStockCnt" column="pdtStockCnt"/>
+        <result property="pdtSaleStatus" column="pdtSaleStatus"/>
+        <result property="pdtDisplayStatus" column="pdtDisplayStatus"/>
+        <result property="pdtImageURL" column="pdtImageURL"/>
+    </resultMap>
+</mapper>

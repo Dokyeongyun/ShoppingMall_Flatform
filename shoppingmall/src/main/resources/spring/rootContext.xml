@@ -9,11 +9,7 @@
 
     <context:property-placeholder location="classpath:shoppingmall_db.properties"/>
 
-    <context:component-scan base-package="ROOT.DAO"/>
-    <context:component-scan base-package="ROOT.Service"/>
-    <context:component-scan base-package="ROOT.Controller"/>
-    <context:component-scan base-package="ROOT.Configuration"/>
-    <context:component-scan base-package="ROOT.VO"/>
+    <context:component-scan base-package="ROOT"/>
 
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="${database.driverClassName}"/>
