@@ -6,7 +6,7 @@
 <script src="/resources/js/bootstrap.js"></script>
 <script src="/resources/js/shop.js?ver=1"></script>
 <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
-<link rel="stylesheet" href="/resources/css/shop.css?ver=1">
+<link rel="stylesheet" href="/resources/css/shop.css?ver=2">
 
 <%--내비게이션 바--%>
 <nav class="navbar navbar-default" style="margin-bottom: 0">
