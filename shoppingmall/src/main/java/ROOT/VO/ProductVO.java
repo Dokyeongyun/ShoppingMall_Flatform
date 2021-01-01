@@ -53,4 +53,25 @@ public class ProductVO implements Serializable {
     public void setPdtSaleStatus(boolean pdtSaleStatus) { this.pdtSaleStatus = pdtSaleStatus; }
     public void setPdtDisplayStatus(boolean pdtDisplayStatus) { this.pdtDisplayStatus = pdtDisplayStatus; }
     public void setPdtImageURL(String pdtImageURL) { this.pdtImageURL = pdtImageURL; }
+
+    @Override
+    public String toString() {
+        return "ProductVO{" +
+                "pdtId='" + pdtId + '\'' +
+                ", pdtName='" + pdtName + '\'' +
+                ", pdtGroupType='" + pdtGroupType + '\'' +
+                ", pdtCategory='" + pdtCategory + '\'' +
+                ", pdtDetail='" + pdtDetail + '\'' +
+                ", pdtPeriodType='" + pdtPeriodType + '\'' +
+                ", pdtSaleStartDate='" + pdtSaleStartDate + '\'' +
+                ", pdtSaleStartTime='" + pdtSaleStartTime + '\'' +
+                ", pdtSaleEndDate='" + pdtSaleEndDate + '\'' +
+                ", pdtSaleEndTime='" + pdtSaleEndTime + '\'' +
+                ", pdtPrice=" + pdtPrice +
+                ", pdtStockCnt=" + pdtStockCnt +
+                ", pdtSaleStatus=" + pdtSaleStatus +
+                ", pdtDisplayStatus=" + pdtDisplayStatus +
+                ", pdtImageURL='" + pdtImageURL + '\'' +
+                '}';
+    }
 }

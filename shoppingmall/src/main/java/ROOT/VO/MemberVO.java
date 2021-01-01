@@ -50,4 +50,16 @@ public class MemberVO implements Serializable {
     public void setEmail(String email) { this.email = email; }
     public void setPhone(String phone) { this.phone = phone; }
     public void setDateOfBirth(String dateOfBirth) { this.dateOfBirth = dateOfBirth; }
+
+    @Override
+    public String toString() {
+        return "MemberVO{" +
+                "userId='" + userId + '\'' +
+                ", userPwd='" + userPwd + '\'' +
+                ", userName='" + userName + '\'' +
+                ", email='" + email + '\'' +
+                ", phone='" + phone + '\'' +
+                ", dateOfBirth='" + dateOfBirth + '\'' +
+                '}';
+    }
 }

@@ -39,16 +39,36 @@
                         </tr>
                         </tbody>
                     </table>
-                    <div class="product_detail_btn_wrap">
-                        <button class="product_detail_btn" id="buyNow" type="submit">BUY IT NOW</button>
-                        <button class="product_detail_btn" id="addToCart" type="submit">ADD TO CART</button>
-                        <button class="product_detail_btn" id="wishList" type="submit">WISH LIST</button>
-                    </div>
+                    <form method="post" action="${pageContext.request.contextPath}/order/directOrder">
+                        <div class="purchase_detail">
+                            <label style="width: 150px" for="quantity">수량</label>
+                            <input type="number" id="quantity" name="quantity" />개
+                            <input hidden id="pdtId" name="pdtId" value="${productDetail.pdtId}"/>
+                        </div>
+                        <div class="product_detail_btn_wrap">
+                            <button class="product_detail_btn" id="buyNow" type="submit">BUY IT NOW</button>
+                            <button class="product_detail_btn" id="addToCart" type="submit">ADD TO CART</button>
+                            <button class="product_detail_btn" id="wishList" type="submit">WISH LIST</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
     <!--//right main menu-->
+<script type="text/javascript">
+    function fn_directOrder(){
+        $.ajax({
+            url : "/order/directOrder",
+            type : "post",
+            dataType : "json",
+            data : {"pdtId" : ${productDetail.pdtId}, "quantity" : 1},
+            success : function(data){
+                location.href=data;
+            }
+        })
+    }
+</script>
 </div>
 </body>
 </html>
