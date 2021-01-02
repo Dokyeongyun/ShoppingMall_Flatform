@@ -28,4 +28,9 @@ public interface MemberDAO {
      * 회원 탈퇴
      */
     void memberWithdraw(MemberVO memberVO);
+
+    /**
+     * 회원정보 가져오기
+     */
+    MemberVO getMemberInfo(MemberVO memberVO);
 }

@@ -3,6 +3,7 @@ package ROOT.Controller;
 import ROOT.Service.MemberService;
 import ROOT.VO.MemberVO;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -125,5 +126,11 @@ public class MemberController {
         session.invalidate();
         rttr.addFlashAttribute("msg", true);
         return "redirect:/member/memberWithdrawView";
+    }
+
+    @ResponseBody
+    @PostMapping("/getMemberInfo")
+    public MemberVO getMemberInfo(MemberVO memberVO){
+        return service.getMemberInfo(memberVO);
     }
 }

@@ -47,4 +47,11 @@ public class MemberDAOImpl implements MemberDAO {
     public void memberWithdraw(MemberVO memberVO){
         sqlSession.delete("memberMapper.memberWithdraw", memberVO);
     }
+
+    /**
+     *  회원정보 가져오기
+     */
+    public MemberVO getMemberInfo(MemberVO memberVO){
+        return sqlSession.selectOne("memberMapper.getMemberInfo", memberVO);
+    }
 }

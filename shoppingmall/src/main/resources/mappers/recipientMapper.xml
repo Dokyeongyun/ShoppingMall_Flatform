@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="recipientMapper">
+
+    <!-- 수령자 정보 등록-->
+    <insert id="addRecipient">
+        INSERT INTO recipient(recipientName, recipientPhone, recipientAddress, recipientMemo, userId)
+        VALUES(#{recipientName}, #{recipientPhone}, #{recipientAddress}, #{recipientMemo}, #{userId})
+    </insert>
+</mapper>

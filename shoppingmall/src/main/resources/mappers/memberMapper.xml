@@ -38,4 +38,11 @@
         WHERE userId = #{userId}
           AND userPwd = #{userPwd}
     </delete>
+
+    <!-- 회원정보 가져오기-->
+    <select id="getMemberInfo" resultType="ROOT.VO.MemberVO">
+        SELECT userId, userName, email, phone, dateOfBirth, reg_date
+        FROM member
+        WHERE userId = #{userId};
+    </select>
 </mapper>

@@ -47,4 +47,11 @@ public class MemberServiceImpl implements MemberService {
     public void memberWithdraw(MemberVO memberVO){
         memberDAO.memberWithdraw(memberVO);
     }
+
+    /**
+     * 회원정보 가져오기
+     */
+    public MemberVO getMemberInfo(MemberVO memberVO){
+        return memberDAO.getMemberInfo(memberVO);
+    }
 }
