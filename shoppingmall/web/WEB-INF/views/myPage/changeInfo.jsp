@@ -4,86 +4,13 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <jsp:include page="/WEB-INF/views/header.jsp"/>
+<jsp:include page="/WEB-INF/views/myPageHeader.jsp"/>
 
-<html>
-<head>
-    <title>회원정보 수정</title>
-</head>
-<script type="text/javascript">
-    $(document).ready(function(){
-        // 비밀번호 변경 창 toggle
-        var change_password_area_obj = $("#change_password_area");
-        var password_area_obj = $("#password_area");
-        var password_obj = $("#password")
-        var newPassword_obj = $("#newPassword")
-        var confirmPassword_obj = $("#confirmPassword")
-
-        // 비밀번호 변경 버튼 클릭
-        $("#change_password_btn").on("click", function(){
-            change_password_area_obj.show();
-            password_area_obj.hide();
-        });
-        // 비밀번호 변경 취소
-        $("#change_password_cancel_btn").on("click", function(){
-            password_obj.val("");
-            newPassword_obj.val("");
-            confirmPassword_obj.val("");
-            change_password_area_obj.hide();
-            password_area_obj.show();
-        });
-        // 비밀번호 변경 작업 수행
-        $("#change_password_finish_btn").on("click", function(){
-            if(password_obj.val()!=${loginMember.userPwd}){
-                alert("비밀번호가 일치하지 않습니다.");
-                return false;
-            }
-            if(confirmPassword_obj.val()===newPassword_obj.val()){
-                if (confirm("비밀번호를 변경하시겠습니까?")===true) {
-                    fn_changePassword();
-                } else {
-                    return false;
-                }
-            }else{
-                alert("신규 비밀번호와 비밀번호 확인이 같지 않습니다.");
-                return false;
-            }
-        });
-        $("#withdraw").on("click", function(){
-            location.href = "/member/memberWithdrawView";
-        })
-
-        function fn_changePassword(){
-            var memberVO = {
-                userId : ${loginMember.userId},
-                userPwd : newPassword_obj.val()
-            };
-
-            $.ajax({
-                url : "/member/changeInfo",
-                type : "post",
-                dataType : "json",
-                data : memberVO,
-                success : function(data){
-                    if(data==="success"){
-                        alert("변경된 비밀번호로 다시 로그인해주세요.");
-                        location.href="/member/login";
-                    }else{
-                        alert("비밀번호 변경에 실패했습니다. 잠시 후 다시 시도해주세요.");
-                    }
-                    console.log(data);
-                }
-            })
-        }
-    })
-
-</script>
-<body>
-
-<section id="container">
+<section class="mypage-cont">
     <div>
         <div class="page_title">회원정보</div>
     </div>
-    <form:form modelAttribute="memberVO">
+    <form>
         <table class="userinfo_table">
             <colgroup>
                 <col style="width:190px">
@@ -159,7 +86,7 @@
             </tr>
             </tbody>
         </table>
-    </form:form>
+    </formform:form>
 </section>
 </body>
 </html>

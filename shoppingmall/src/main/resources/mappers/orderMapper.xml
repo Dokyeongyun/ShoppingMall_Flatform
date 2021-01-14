@@ -12,4 +12,25 @@
                #{recipientVO.recipientName}, #{recipientVO.recipientPhone},
                #{recipientVO.recipientAddress}, #{recipientVO.recipientMemo})
     </insert>
+
+    <select id="getOrderList" resultMap="orderResultMap">
+        SELECT p.pdtId, pdtName, pdtPrice, pdtImageURL, orderNo, orderDate, orderStatusType, totalAmount, quantity
+        FROM orders o, product p
+        WHERE o.pdtId = p.pdtId AND o.memberId = #{userId};
+    </select>
+
+    <resultMap type="ROOT.VO.OrderVO" id="orderResultMap">
+        <id property="orderNo" column="orderNo"/>
+        <result property="orderDate" column="orderDate"/>
+        <result property="orderStatusType" column="orderStatusType"/>
+        <result property="totalAmount" column="totalAmount"/>
+        <result property="quantity" column="quantity"/>
+        <association property="productVO"  javaType="ROOT.VO.ProductVO" >
+            <result property="pdtId" column="pdtId"/>
+            <result property="pdtName" column="pdtName"/>
+            <result property="pdtPrice" column="pdtPrice"/>
+            <result property="pdtImageURL" column="pdtImageURL"/>
+        </association>
+    </resultMap>
+
 </mapper>

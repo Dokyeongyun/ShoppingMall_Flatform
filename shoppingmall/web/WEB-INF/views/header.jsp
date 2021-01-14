@@ -6,7 +6,7 @@
 <script src="/resources/js/bootstrap.js"></script>
 <script src="/resources/js/shop.js?ver=1"></script>
 <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
-<link rel="stylesheet" href="/resources/css/shop.css?ver=3">
+<link rel="stylesheet" href="/resources/css/shop.css?v=2">
 
 <%--내비게이션 바--%>
 <nav class="navbar navbar-default" style="margin-bottom: 0">
@@ -36,7 +36,7 @@
                         <li><a href="${pageContext.request.contextPath}/member/signUpView">회원가입</a> </li>
                     </c:if>
                     <c:if test="${sessionScope.loginMember ne null}">
-                        <li class="active"><a href="${pageContext.request.contextPath}/member/changeInfo">회원정보 수정</a> </li>
+                        <li class="active"><a href="${pageContext.request.contextPath}/member/myPage">마이페이지</a> </li>
                         <li><a href="${pageContext.request.contextPath}/member/logout">로그아웃</a> </li>
                     </c:if>
                 </ul>

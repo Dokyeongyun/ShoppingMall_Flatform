@@ -80,24 +80,7 @@ public class MemberController {
         return "redirect:/";
     }
 
-    /**
-     * 회원정보 수정 화면
-     */
-    @GetMapping("/changeInfo")
-    public String changeInfoView(Model model) { return "/member/changeInfo"; }
 
-    /**
-     * 회원정보 수정 작업 수행
-     */
-    @ResponseBody
-    @PostMapping("/changeInfo")
-    public String changeInfo(MemberVO vo, HttpSession session) {
-        if(service.changeInfo(vo) == 1){
-            session.invalidate();
-            return "success";
-        }
-        return "false";
-    }
 
     /**
      * 아이디 중복확인
@@ -138,4 +121,10 @@ public class MemberController {
     public MemberVO getMemberInfo(MemberVO memberVO){
         return service.getMemberInfo(memberVO);
     }
+
+    /**
+     * 마이페이지
+     */
+    @GetMapping("/myPage")
+    public void myPageView(){}
 }
