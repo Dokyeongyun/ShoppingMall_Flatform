@@ -3,14 +3,11 @@ package ROOT.Controller;
 import ROOT.Service.MemberService;
 import ROOT.VO.MemberVO;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.inject.Inject;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 @Controller
@@ -44,11 +41,7 @@ public class MemberController {
         return "redirect:/";
     }
 
-    /**
-     * 로그인 화면
-     */
-    @RequestMapping(value = "/loginView", method = RequestMethod.GET)
-    public void loginView(){ }
+
 
     /**
      * 로그아웃
@@ -59,21 +52,30 @@ public class MemberController {
         return "redirect:/";
     }
 
+    @ModelAttribute
+    public MemberVO setMemberForm(){ return new MemberVO(); }
+
+    /**
+     * 로그인 화면
+     */
+    @GetMapping("/login")
+    public String loginView(Model model){ return "/member/login"; }
+
     /**
      * 로그인 작업 수행
      */
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String login(MemberVO vo, HttpServletRequest req, RedirectAttributes rttr) {
-        HttpSession session = req.getSession();
+    @PostMapping("/login")
+    public String login(MemberVO vo, HttpSession session, RedirectAttributes rttr) {
         MemberVO loginMember = service.login(vo);
 
         if(loginMember == null) {
             session.setAttribute("member", null);
             rttr.addFlashAttribute("msg", false);
-            return "redirect:/member/loginView";
-        }else {
-            session.setAttribute("member", loginMember);
+            return "redirect:/member/login";
         }
+
+        rttr.addFlashAttribute("msg", true);
+        session.setAttribute("loginMember", loginMember);
 
         return "redirect:/";
     }
@@ -81,17 +83,20 @@ public class MemberController {
     /**
      * 회원정보 수정 화면
      */
-    @RequestMapping(value="/changeInfoView", method = RequestMethod.GET)
-    public void changeInfoView() { }
+    @GetMapping("/changeInfo")
+    public String changeInfoView(Model model) { return "/member/changeInfo"; }
 
     /**
      * 회원정보 수정 작업 수행
      */
-    @RequestMapping(value="/changeInfo", method = RequestMethod.POST)
+    @ResponseBody
+    @PostMapping("/changeInfo")
     public String changeInfo(MemberVO vo, HttpSession session) {
-        service.changeInfo(vo);
-        session.invalidate();
-        return "redirect:/";
+        if(service.changeInfo(vo) == 1){
+            session.invalidate();
+            return "success";
+        }
+        return "false";
     }
 
     /**

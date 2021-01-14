@@ -9,7 +9,6 @@ import ROOT.VO.OrderVO;
 import ROOT.VO.ProductVO;
 import ROOT.VO.RecipientVO;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -29,10 +28,13 @@ public class OrderController {
     @Inject
     OrderService orderService;
 
+    @ModelAttribute
+    public MemberVO setMemberForm(){ return new MemberVO(); }
+
     @PostMapping("/directOrder")
     public String directOrder(HttpSession session, ProductVO productVO, OrderVO orderVO, RedirectAttributes redirectAttributes){
-        if(session.getAttribute("member")==null){
-            return "/member/loginView";
+        if(session.getAttribute("loginMember")==null){
+            return "redirect:/member/login";
         }
         productVO = productService.getProductDetail(productVO);
         MemberVO loginMember = (MemberVO) session.getAttribute("member");

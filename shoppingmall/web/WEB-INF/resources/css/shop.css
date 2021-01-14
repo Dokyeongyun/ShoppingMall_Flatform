@@ -202,3 +202,29 @@
     font-weight: bold;
     border: 0;
 }
+
+/*회원 정보 수정*/
+
+.userinfo_table {
+    width: 100%;
+    line-height: 50px;
+    font-size: 14px;
+    border-bottom: 1px solid #ddd;
+}
+.userinfo_table > tbody > tr > th{
+    padding-left: 20px;
+}
+.userinfo_table > tbody > tr > td{
+    padding-left: 20px;
+}
+.changeInfo_input_box {
+    width: 200px;
+    height: 30px;
+    margin-left: 20px;
+}
+.info_modify > .input > label {
+    width: 200px;
+}
+.info_modify > .btn_group {
+    padding: 22px 0 15px 0;
+}

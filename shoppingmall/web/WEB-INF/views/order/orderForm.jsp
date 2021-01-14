@@ -249,7 +249,6 @@
     var recipientName = $('input[name="recipientName"]');
     var recipientAddress = $('input[name="recipientAddress"]');
     var recipientMemo = $('#recipientMemo');
-    var paymentType = $('input[name="paymentType"]');
 
     function fn_payment(){
         var orderData = {
@@ -262,7 +261,7 @@
             pdtId : ${orderInfo.productVO.pdtId},
             quantity : ${orderInfo.quantity},
             totalAmount : ${orderInfo.productVO.pdtPrice * orderInfo.quantity},
-            paymentType : paymentType.val()
+            paymentType : $('input:radio[name="paymentType"]:checked').val()
         };
 
         $.ajax({

@@ -30,8 +30,8 @@ public class MemberDAOImpl implements MemberDAO {
     /**
      * 회원정보 변경
      */
-    public void changeInfo(MemberVO memberVO){
-        sqlSession.update("memberMapper.changeInfo", memberVO);
+    public int changeInfo(MemberVO memberVO){
+        return sqlSession.update("memberMapper.changeInfo", memberVO);
     }
 
     /**

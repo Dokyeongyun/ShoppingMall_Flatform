@@ -17,7 +17,7 @@ public interface MemberDAO {
     /**
      * 회원정보 변경
      */
-    void changeInfo(MemberVO memberVO);
+    int changeInfo(MemberVO memberVO);
 
     /**
      * 아이디 중복확인

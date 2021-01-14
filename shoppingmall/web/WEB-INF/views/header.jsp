@@ -6,7 +6,7 @@
 <script src="/resources/js/bootstrap.js"></script>
 <script src="/resources/js/shop.js?ver=1"></script>
 <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
-<link rel="stylesheet" href="/resources/css/shop.css?ver=2">
+<link rel="stylesheet" href="/resources/css/shop.css?ver=3">
 
 <%--내비게이션 바--%>
 <nav class="navbar navbar-default" style="margin-bottom: 0">
@@ -31,12 +31,12 @@
                    data-toggle="dropdown" role="button" aria-haspopup="true"
                    aria-expanded="false">접속하기<span class="caret"></span> </a>
                 <ul class="dropdown-menu">
-                    <c:if test="${sessionScope.member eq null}">
-                        <li class="active"><a href="${pageContext.request.contextPath}/member/loginView">로그인</a> </li>
+                    <c:if test="${sessionScope.loginMember eq null}">
+                        <li class="active"><a href="${pageContext.request.contextPath}/member/login">로그인</a> </li>
                         <li><a href="${pageContext.request.contextPath}/member/signUpView">회원가입</a> </li>
                     </c:if>
-                    <c:if test="${sessionScope.member ne null}">
-                        <li class="active"><a href="${pageContext.request.contextPath}/member/changeInfoView">회원정보 수정</a> </li>
+                    <c:if test="${sessionScope.loginMember ne null}">
+                        <li class="active"><a href="${pageContext.request.contextPath}/member/changeInfo">회원정보 수정</a> </li>
                         <li><a href="${pageContext.request.contextPath}/member/logout">로그아웃</a> </li>
                     </c:if>
                 </ul>

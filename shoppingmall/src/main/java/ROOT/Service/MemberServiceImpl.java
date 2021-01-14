@@ -30,8 +30,8 @@ public class MemberServiceImpl implements MemberService {
     /**
      * 회원정보 수정
      */
-    public void changeInfo(MemberVO memberVO) {
-        memberDAO.changeInfo(memberVO);
+    public int changeInfo(MemberVO memberVO) {
+        return memberDAO.changeInfo(memberVO);
     }
 
     /**

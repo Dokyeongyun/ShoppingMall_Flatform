@@ -12,7 +12,7 @@
 
     <!--로그인-->
     <select id="login" resultType="ROOT.VO.MemberVO">
-        SELECT userId, userPwd
+        SELECT *
         FROM member
         WHERE userId = #{userId} AND userPwd = #{userPwd}
     </select>
@@ -20,8 +20,7 @@
     <!--회원정보 수정-->
     <update id="changeInfo">
         UPDATE member
-        SET userPwd = #{userPwd},
-            userName = #{userName}
+        SET userPwd = #{userPwd}
         WHERE userId = #{userId}
     </update>
 
