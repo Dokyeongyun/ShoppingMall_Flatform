@@ -13,18 +13,33 @@
                #{recipientVO.recipientAddress}, #{recipientVO.recipientMemo})
     </insert>
 
+    <!-- 개인별 주문내역 -->
     <select id="getOrderList" resultMap="orderResultMap">
-        SELECT p.pdtId, pdtName, pdtPrice, pdtImageURL, orderNo, orderDate, orderStatusType, totalAmount, quantity
+        SELECT p.pdtId, pdtName, pdtPrice, pdtImageURL, orderId, orderDate, orderStatusType, totalAmount, quantity
         FROM orders o, product p
         WHERE o.pdtId = p.pdtId AND o.memberId = #{userId};
     </select>
 
+    <!-- 주문번호별 주문상세내역 -->
+    <select id="getOrderDetail" resultMap="orderResultMap">
+        SELECT *
+        FROM orders o, product p
+        WHERE o.pdtId = p.pdtId AND o.orderId = #{orderId};
+    </select>
+
     <resultMap type="ROOT.VO.OrderVO" id="orderResultMap">
-        <id property="orderNo" column="orderNo"/>
+        <id property="orderId" column="orderId"/>
         <result property="orderDate" column="orderDate"/>
         <result property="orderStatusType" column="orderStatusType"/>
+        <result property="paymentType" column="paymentType"/>
         <result property="totalAmount" column="totalAmount"/>
         <result property="quantity" column="quantity"/>
+        <association property="recipientVO"  javaType="ROOT.VO.RecipientVO" >
+            <result property="recipientName" column="recipientName"/>
+            <result property="recipientPhone" column="recipientPhone"/>
+            <result property="recipientAddress" column="recipientAddress"/>
+            <result property="recipientMemo" column="recipientMemo"/>
+        </association>
         <association property="productVO"  javaType="ROOT.VO.ProductVO" >
             <result property="pdtId" column="pdtId"/>
             <result property="pdtName" column="pdtName"/>

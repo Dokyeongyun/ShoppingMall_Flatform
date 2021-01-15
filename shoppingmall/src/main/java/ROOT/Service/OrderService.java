@@ -16,4 +16,9 @@ public interface OrderService {
      * 개인별 주문내역 조회
      */
     List<OrderVO> getOrderList(MemberVO memberVO);
+
+    /**
+     * 주문번호별 주문상세내역
+     */
+    List<OrderVO> getOrderDetail(OrderVO orderVO);
 }

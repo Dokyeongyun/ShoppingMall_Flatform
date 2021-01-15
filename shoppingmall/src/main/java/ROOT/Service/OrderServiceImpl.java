@@ -29,4 +29,11 @@ public class OrderServiceImpl implements OrderService {
     public List<OrderVO> getOrderList(MemberVO memberVO){
         return orderDAO.getOrderList(memberVO);
     }
+
+    /**
+     * 주문번호별 주문상세내역
+     */
+    public List<OrderVO> getOrderDetail(OrderVO orderVO){
+        return orderDAO.getOrderDetail(orderVO);
+    }
 }

@@ -28,4 +28,11 @@ public class OrderDAOImpl implements OrderDAO {
     public List<OrderVO> getOrderList(MemberVO memberVO){
         return sqlSession.selectList("orderMapper.getOrderList", memberVO);
     }
+
+    /**
+     * 주문번호별 주문상세내역
+     */
+    public List<OrderVO> getOrderDetail(OrderVO orderVO){
+        return sqlSession.selectList("orderMapper.getOrderDetail", orderVO);
+    }
 }

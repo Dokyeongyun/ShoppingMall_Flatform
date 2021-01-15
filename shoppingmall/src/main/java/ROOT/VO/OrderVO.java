@@ -3,7 +3,7 @@ package ROOT.VO;
 import java.io.Serializable;
 
 public class OrderVO implements Serializable {
-    private int orderNo;
+    private int orderId;
     private String orderDate;
     private String orderStatusType;
     private ProductVO productVO;
@@ -13,7 +13,7 @@ public class OrderVO implements Serializable {
     private int totalAmount;
     private RecipientVO recipientVO;
 
-    public int getOrderNo() { return orderNo; }
+    public int getOrderId() { return orderId; }
     public String getOrderDate() { return orderDate; }
     public String getOrderStatusType() { return orderStatusType; }
     public ProductVO getProductVO() { return productVO; }
@@ -23,7 +23,7 @@ public class OrderVO implements Serializable {
     public String getPaymentType() { return paymentType; }
     public RecipientVO getRecipientVO() { return recipientVO; }
 
-    public void setOrderNo(int orderNo) { this.orderNo = orderNo; }
+    public void setOrderId(int orderId) { this.orderId = orderId; }
     public void setOrderDate(String orderDate) { this.orderDate = orderDate; }
     public void setOrderStatusType(String orderStatusType) { this.orderStatusType = orderStatusType; }
     public void setProductVO(ProductVO productVO) { this.productVO = productVO; }
@@ -36,11 +36,15 @@ public class OrderVO implements Serializable {
     @Override
     public String toString() {
         return "OrderVO{" +
-                "productVO=" + productVO +
+                "orderId=" + orderId +
+                ", orderDate='" + orderDate + '\'' +
+                ", orderStatusType='" + orderStatusType + '\'' +
+                ", productVO=" + productVO +
                 ", memberVO=" + memberVO +
                 ", quantity=" + quantity +
                 ", paymentType='" + paymentType + '\'' +
                 ", totalAmount=" + totalAmount +
-                '}';
+                ", recipientVO=" + recipientVO +
+                "}\n";
     }
 }

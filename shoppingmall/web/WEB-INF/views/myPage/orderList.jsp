@@ -41,7 +41,9 @@
                         </div>
                     </td>
                     <td class="product_info_td">${orderList.orderDate}</td>
-                    <td class="product_info_td">${orderList.orderNo}</td>
+                    <td class="product_info_td">
+                        <a href="/myPage/orderDetail/${orderList.orderId}" target="_blank">${orderList.orderId}</a>
+                    </td>
                     <td class="product_info_td">${orderList.totalAmount} 원 <br>(${orderList.quantity}개)</td>
                     <td class="product_info_td">${orderList.orderStatusType}</td>
                 </tr>

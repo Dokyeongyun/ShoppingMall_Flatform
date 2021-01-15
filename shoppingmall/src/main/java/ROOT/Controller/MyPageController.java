@@ -7,10 +7,8 @@ import ROOT.VO.MemberVO;
 import ROOT.VO.OrderVO;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
@@ -40,6 +38,21 @@ public class MyPageController {
 
         model.addAttribute("orderList", orderList);
         return model;
+    }
+
+    /**
+     * 주문 상세내역 화면
+     */
+    @GetMapping("/orderDetail/{orderId}")
+    public ModelAndView orderDetailView(HttpSession session, Model model, OrderVO orderVO){
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("/myPage/orderDetail");
+        if(session.getAttribute("loginMember") == null){
+            return mav;
+        }
+        List<OrderVO> orderDetail = orderService.getOrderDetail(orderVO);
+        mav.addObject("orderDetail", orderDetail);
+        return mav;
     }
 
     /**
